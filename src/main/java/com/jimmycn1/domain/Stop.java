@@ -8,7 +8,7 @@ public enum Stop {
   
   public final String stopNumber;
   
-  private Stop(String stopNumber) {
+  Stop(String stopNumber) {
     this.stopNumber = stopNumber;
   }
   

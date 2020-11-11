@@ -18,18 +18,18 @@ public class CommuterTripTransformer {
   }
   
   public CommuterTrip from(TapEvent tapOnEvent, TapEvent tapOffEvent) {
-    return new CommuterTrip(
-            tapOnEvent.getDateTime(),
-            getFinishTime(tapOnEvent, tapOffEvent),
-            calculateDurationSeconds(tapOnEvent, tapOffEvent),
-            tapOnEvent.getStop(),
-            getDepartureStop(tapOffEvent),
-            determineChargeAmount(tapOnEvent, tapOffEvent),
-            tapOnEvent.getCompanyId(),
-            tapOnEvent.getVehicleId(),
-            tapOnEvent.getPan(),
-            getTripStatus(tapOffEvent)
-    );
+    return new CommuterTrip.CommuterTripBuilder()
+            .setStarted(tapOnEvent.getDateTime())
+            .setFinished(getFinishTime(tapOnEvent, tapOffEvent))
+            .setDurationSeconds(calculateDurationSeconds(tapOnEvent, tapOffEvent))
+            .setFromStop(tapOnEvent.getStop())
+            .setToStop(getDepartureStop(tapOffEvent))
+            .setChargeAmount(determineChargeAmount(tapOnEvent, tapOffEvent))
+            .setCompanyId(tapOnEvent.getCompanyId())
+            .setVehicleId(tapOnEvent.getVehicleId())
+            .setPan(tapOnEvent.getPan())
+            .setStatus(getTripStatus(tapOffEvent))
+            .build();
   }
   
   public CommuterTrip from(TapEvent tapOnEvent) {

@@ -8,14 +8,13 @@ import com.jimmycn1.util.Util;
 public class TouchEventTransformer {
   
   public TapEvent from(String[] touchEventCsvLine) {
-    return new TapEvent(
-            new Long(touchEventCsvLine[0]),
-            Util.parseDateTime(touchEventCsvLine[1]),
-            TapType.valueOf(touchEventCsvLine[2]),
-            Stop.fromString(touchEventCsvLine[3]),
-            touchEventCsvLine[4],
-            touchEventCsvLine[5],
-            touchEventCsvLine[6]
-    );
+    return new TapEvent.TapEventBuilder()
+            .setId(new Long(touchEventCsvLine[0]))
+            .setDateTime(Util.parseDateTime(touchEventCsvLine[1]))
+            .setTabType(TapType.valueOf(touchEventCsvLine[2]))
+            .setStop(Stop.fromString(touchEventCsvLine[3]))
+            .setCompanyId(touchEventCsvLine[4])
+            .setVehicleId(touchEventCsvLine[5])
+            .setPan(touchEventCsvLine[6]).build();
   }
 }
