@@ -8,11 +8,11 @@ import com.jimmycn1.transformer.CommuterTripTransformer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TripsPerVehicleStrategy {
+public class TripsStrategy {
   private final static int NEXT_TAP_EVENT = 1;
   private final CommuterTripTransformer commuterTripTransformer;
   
-  public TripsPerVehicleStrategy() {
+  public TripsStrategy() {
     this.commuterTripTransformer = new CommuterTripTransformer();
   }
   
